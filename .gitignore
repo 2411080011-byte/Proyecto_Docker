@@ -1,0 +1,16 @@
+# Archivos con secretos
+src/config_oauth.php
+
+# Node / React (si tienes)
+node_modules/
+dist/
+.env
+
+# Docker logs y datos temporales
+*.log
+docker-compose.override.yml
+docker-volume-data/
+
+# Sistema
+.DS_Store
+Thumbs.db

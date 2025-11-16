@@ -1,0 +1,66 @@
+version: "3.8"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-2
+
+    ports:
+      - "8082:80"
+
+    volumes:
+      - ./src:/var/www/html
+
+    depends_on:
+      - db
+
+    networks:
+      - app-network-2
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-2
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootcayo
+      MYSQL_DATABASE: venta
+      MYSQL_USER: cayo
+      MYSQL_PASSWORD: 1234
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - db_data:/var/lib/mysql
+
+    networks:
+      - app-network-2
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-2
+    restart: always
+
+    ports:
+      - "8083:80"
+
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootcayo
+      UPLOAD_LIMIT: 100M
+
+    depends_on:
+      - db
+
+    networks:
+      - app-network-2
+
+volumes:
+  db_data:
+
+networks:
+  app-network-2:
+    driver: bridge
