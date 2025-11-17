@@ -65,7 +65,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
       <div class="image">
 
-        <img src="/assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="/assets/img/avatar.avif" class="img-circle elevation-2" alt="User Image">
 
       </div>
 

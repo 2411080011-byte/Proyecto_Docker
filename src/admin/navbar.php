@@ -56,7 +56,7 @@ require_once __DIR__ . '/../includes/config.php';
 
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header text-center">
-          <img src="/assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image" width="58" height="65">
+          <img src="/assets/img/avatar.avif" class="img-circle elevation-2" alt="User Image" width="58" height="65">
           <p class="mt-2">
             <?php echo $_SESSION['usuario_nombre'] ?? 'Administrador'; ?>
             <small>Miembro desde <?php echo date('M. Y'); ?></small>
