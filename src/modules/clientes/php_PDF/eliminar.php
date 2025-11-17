@@ -16,7 +16,7 @@ if($cliente->leerUno()){
 
     if($cliente->eliminar()){
 
-        header("Location: ../index_lista_clientes.php?message=Cliente eliminado exitosamente");
+        header("Location: /modules/clientes/index_lista_clientes.php?message=Cliente eliminado exitosamente");
 
         exit();
 

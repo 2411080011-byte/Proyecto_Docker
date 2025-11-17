@@ -148,7 +148,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
             <li class="nav-item">
               <a href="/modules/vendedores/index_lista_vendedores.php"
-                class="nav-link <?php echo $current_page == 'index.php' && strpos($_SERVER['REQUEST_URI'], 'vendedores') !== false ? 'active' : ''; ?>">
+                class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index_lista_vendedores.php' ? 'active' : ''; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Lista de Vendedores</p>
               </a>
@@ -156,19 +156,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
             <li class="nav-item">
               <a href="/modules/vendedores/index_agregar_vendedor.php"
-                class="nav-link <?php echo $current_page == 'crear.php' ? 'active' : ''; ?>">
+                class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index_agregar_vendedor.php' ? 'active' : ''; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Agregar Vendedor</p>
               </a>
             </li>
-
-            <li class="nav-item">
-              <a href="../modules/vendedores/reportes.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Reportes</p>
-              </a>
-            </li>
-
           </ul>
 
         </li>
@@ -186,29 +178,22 @@ $current_page = basename($_SERVER['PHP_SELF']);
           
           <ul class="nav nav-treeview">
 
-            <li class="nav-item">
+           <li class="nav-item">
               <a href="/modules/clientes/index_lista_clientes.php"
-                class="nav-link <?php echo $current_page == 'index.php' && strpos($_SERVER['REQUEST_URI'], 'clientes') !== false ? '' : ''; ?>">
+                class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index_lista_clientes.php' ? 'active' : ''; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Lista de Clientes</p>
               </a>
             </li>
 
+
             <li class="nav-item">
               <a href="/modules/clientes/index_agregar_cliente.php"
-                class="nav-link <?php echo $current_page == 'crear.php' ? '' : ''; ?>">
+                class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'index_agregar_cliente.php' ? 'active' : ''; ?>">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Agregar Cliente</p>
               </a>
             </li>
-
-            <li class="nav-item">
-              <a href="../modules/vendedores/reportes.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Reportes</p>
-              </a>
-            </li>
-
           </ul>
 
         </li>
@@ -216,7 +201,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 
         <!-- Ventas -->
-        <li class="nav-item">
+        <li class="nav-item item-des">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
@@ -271,7 +256,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
         <!-- Reportes -->
 
-        <li class="nav-item">
+        <li class="nav-item item-des">
 
           <a href="#" class="nav-link">
 
@@ -332,7 +317,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
         <!-- Configuración -->
 
-        <li class="nav-item">
+        <li class="nav-item item-des">
 
           <a href="../modules/configuracion/general.php" class="nav-link">
 
@@ -356,3 +341,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
   <!-- /.sidebar -->
 
 </aside>
+
+<style>
+  .item-des{
+    pointer-events: none;
+    opacity: 0.5;
+  }
+</style>

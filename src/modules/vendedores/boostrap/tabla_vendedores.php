@@ -92,10 +92,11 @@ try {
                       <?= htmlspecialchars(date('d/m/Y', strtotime($vendedor['fecha']))) ?>
                     </td>
                     <td>
-                      <a href="detalle_vendedor.php?id=<?= $vendedor['id'] ?>" 
-                         class="btn btn-sm btn-primary mb-1 shadow-sm">
-                        <i class="fa-solid fa-eye me-1"></i> Ver
+                      <a href="index_editar_vendedor.php?id=<?= $vendedor['id'] ?>" 
+                        class="btn btn-sm btn-warning mb-1 shadow-sm" title="Editar Vendedor" role="button">
+                        <i class="fa-solid fa-pen-to-square me-1"></i> Editar
                       </a>
+
                       <a href="?delete_id=<?= $vendedor['id'] ?>" 
                          class="btn btn-sm btn-danger mb-1 shadow-sm" 
                          onclick="return confirm('¿Estás seguro de eliminar este vendedor?');">
@@ -124,6 +125,8 @@ try {
 <style>
 body {
   background-color: #f4f6f9 !important;
+}
+.content{
   font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
 }
 .card {
@@ -143,9 +146,9 @@ body {
   background-color: #e0f2fe !important;
   transition: 0.3s ease;
 }
-.badge {
+/* .badge {
   font-size: 0.9rem;
-}
+} */
 .fila-vendedor td {
   vertical-align: middle;
 }
@@ -155,5 +158,12 @@ body {
 }
 .btn-primary:hover, .btn-danger:hover {
   opacity: 0.9;
+}
+
+@media (min-width: 800px){
+  .content{
+  padding-left: 20px;
+  padding-right: 20px;
+}
 }
 </style>

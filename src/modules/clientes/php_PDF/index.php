@@ -97,11 +97,14 @@ $total_clientes = $cliente->contar();
         flex-direction: column;
         align-items: center;
     }
-
+    .btn-pdf {
+        margin-left: 0;
+    }
     .table-actions .btn {
         width: 100%;
         margin: 3px 0;
     }
+    
 }
 </style>
 
@@ -162,7 +165,7 @@ $total_clientes = $cliente->contar();
                                     <td><?php echo htmlspecialchars($row['telefono']); ?></td>
                                     <td><?php echo htmlspecialchars($row['direccion']); ?></td>
                                     <td class="table-actions text-center">
-                                        <a href="/src/modules/clientes/php_PDF/generar_pdf_individual.php?id=<?php echo $row['id']; ?>"
+                                        <a href="/modules/clientes/php_PDF/generar_pdf_individual.php?id=<?php echo $row['id']; ?>"
                                            class="btn btn-warning btn-sm" target="_blank" title="Generar PDF">
                                            <i class="fas fa-file-pdf"></i>
                                         </a>
@@ -170,7 +173,7 @@ $total_clientes = $cliente->contar();
                                            class="btn btn-primary btn-sm" title="Editar">
                                            <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="/src/modules/clientes/php_PDF/eliminar.php?id=<?php echo $row['id']; ?>"
+                                        <a href="/modules/clientes/php_PDF/eliminar.php?id=<?php echo $row['id']; ?>"
                                            class="btn btn-danger btn-sm"
                                            onclick="return confirm('¿Estás seguro de eliminar este cliente?')"
                                            title="Eliminar">

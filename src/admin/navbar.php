@@ -15,7 +15,7 @@ require_once __DIR__ . '/../includes/config.php';
       </a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="/src/admin/index.php" class="nav-link">Inicio</a>
+      <a href="/admin/index.php" class="nav-link">Inicio</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Soporte</a>
@@ -56,7 +56,7 @@ require_once __DIR__ . '/../includes/config.php';
 
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header text-center">
-          <img src="/src/assets/img/user-avatar.jpg" class="img-circle elevation-2" alt="User Image" width="58" height="65">
+          <img src="/assets/img/avatar.jpg" class="img-circle elevation-2" alt="User Image" width="58" height="65">
           <p class="mt-2">
             <?php echo $_SESSION['usuario_nombre'] ?? 'Administrador'; ?>
             <small>Miembro desde <?php echo date('M. Y'); ?></small>
@@ -64,14 +64,14 @@ require_once __DIR__ . '/../includes/config.php';
         </span>
 
         <div class="dropdown-divider"></div>
-        <a href="profile.php" class="dropdown-item">
+        <a href="/admin/index.php" class="dropdown-item">
           <i class="fas fa-user mr-2"></i> Mi Perfil
         </a>
-        <a href="settings.php" class="dropdown-item">
+        <a href="/admin/index.php" class="dropdown-item">
           <i class="fas fa-cog mr-2"></i> Configuración
         </a>
         <div class="dropdown-divider"></div>
-        <a href="/src/logout.php" class="dropdown-item text-danger">
+        <a href="/logout.php" class="dropdown-item text-danger">
           <i class="fas fa-sign-out-alt mr-2"></i> Cerrar Sesión
         </a>
       </div>
