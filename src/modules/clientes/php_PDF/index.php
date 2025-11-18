@@ -11,17 +11,11 @@ $num = $stmt->rowCount();
 $total_clientes = $cliente->contar();
 ?>
 
-<!-- AdminLTE CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@4.2/dist/css/adminlte.min.css">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
     /* CONTENEDORES DE LOS BOTONES Y TABLA */
     .row, .card{
         margin: 0 20px;
     }
-
 
 /* ======= HEADER ======= */
 .header-crud {
@@ -83,10 +77,10 @@ $total_clientes = $cliente->contar();
         width: 100%;
         margin-bottom: 0.5rem;
     }
-
+/* 
     .badge {
         font-size: 1rem !important;
-    }
+    } */
 
     .table {
         font-size: 0.9rem;

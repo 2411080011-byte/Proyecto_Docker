@@ -61,7 +61,7 @@ unset($_SESSION['login_error']);
 </head>
 
 <body class="hold-transition login-page">
-  <img class="fondo-login" src="assets/img/fondo.avif">
+  <img class="fondo-login" src="/assets/img/fondo.avif">
 
   <div class="login-box">
     <div class="card">
