@@ -3,6 +3,13 @@
 require_once __DIR__ . '/../includes/config.php';
 
 //checkAuth();
+
+// === NUEVO: obtener foto Google o avatar por defecto ===
+if (isset($_SESSION['google_picture']) && $_SESSION['google_picture'] !== null) {
+    $foto_usuario = $_SESSION['google_picture'] . '?sz=200';
+} else {
+    $foto_usuario = '/assets/img/user.png';
+}
 ?>
 
 <!-- Navbar -->
@@ -24,6 +31,7 @@ require_once __DIR__ . '/../includes/config.php';
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
+
     <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown notificaciones_item">
       <a class="nav-link" data-toggle="dropdown" href="#">
@@ -32,16 +40,19 @@ require_once __DIR__ . '/../includes/config.php';
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header">15 Notificaciones</span>
+
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item">
           <i class="fas fa-envelope mr-2"></i> 4 nuevos mensajes
           <span class="float-right text-muted text-sm">3 mins</span>
         </a>
+
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item">
           <i class="fas fa-users mr-2"></i> 8 solicitudes de amistad
           <span class="float-right text-muted text-sm">12 horas</span>
         </a>
+
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item dropdown-footer">Ver todas las notificaciones</a>
       </div>
@@ -50,13 +61,21 @@ require_once __DIR__ . '/../includes/config.php';
     <!-- User Account Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link usuario-navbar" data-toggle="dropdown" href="#">
-        <i class="far fa-user"></i>
+        <img src="<?= htmlspecialchars($foto_usuario) ?>" 
+             class="img-circle elevation-2" 
+             alt="User Image" 
+             width="28" height="28"
+             style="object-fit: cover; margin-right: 5px;">
         <span class="usuario-nombre"><?php echo $_SESSION['usuario_nombre'] ?? 'Usuario'; ?></span>
       </a>
 
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <span class="dropdown-item dropdown-header text-center">
-          <img src="/assets/img/avatar.avif" class="img-circle elevation-2" alt="User Image" width="58" height="65">
+          <img src="<?= htmlspecialchars($foto_usuario) ?>" 
+               class="img-circle elevation-2" 
+               alt="User Image" 
+               width="58" height="65"
+               style="object-fit: cover;">
           <p class="mt-2">
             <?php echo $_SESSION['usuario_nombre'] ?? 'Administrador'; ?>
             <small>Miembro desde <?php echo date('M. Y'); ?></small>
@@ -67,9 +86,11 @@ require_once __DIR__ . '/../includes/config.php';
         <a href="/admin/index.php" class="dropdown-item">
           <i class="fas fa-user mr-2"></i> Mi Perfil
         </a>
+
         <a href="/admin/index.php" class="dropdown-item">
           <i class="fas fa-cog mr-2"></i> Configuración
         </a>
+
         <div class="dropdown-divider"></div>
         <a href="/logout.php" class="dropdown-item text-danger">
           <i class="fas fa-sign-out-alt mr-2"></i> Cerrar Sesión
@@ -99,27 +120,28 @@ require_once __DIR__ . '/../includes/config.php';
   margin-left: 5px;
   display: inline-block;
   vertical-align: middle;
-  white-space: nowrap; /* por defecto una línea */
+  white-space: nowrap; /* una línea */
 }
 
-/* Para móviles: permitir máximo 2 líneas y envolver el texto */
+/* Para móviles */
 @media (max-width: 576px) {
   .usuario-navbar .usuario-nombre {
-    white-space: normal; /* permite salto de línea */
+    white-space: normal;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* máximo 2 líneas */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .cabezera{
+  .cabezera {
     position: sticky;
     top: 0;
     box-shadow: 0 0 6px #727272ff;
   }
 
-  .notificaciones_item, .pantalla_completa{
+  .notificaciones_item,
+  .pantalla_completa {
     display: none;
   }
 }

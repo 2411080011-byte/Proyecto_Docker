@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bienvenido | Sistema</title>
+
+  <!-- Fuentes e iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    /* ===== FONDO RESPONSIVE SIN BUG ===== */
+    .fondo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-image: url('assets/img/fondo.avif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+      filter: contrast(1.2) brightness(.8) saturate(1.1);
+    }
+
+    /* Fix para móviles (usa viewport REAL sin barras dinámicas) */
+    @supports (-webkit-touch-callout: none) {
+      .fondo {
+        height: 100dvh;
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
+      z-index: -1;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Contenido */
+    .contenido {
+      position: relative;
+      z-index: 10;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .titulo {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      animation: fadeIn 1.2s ease-out forwards;
+      text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    }
+
+    .subtitulo {
+      font-size: 1.2rem;
+      font-weight: 300;
+      max-width: 450px;
+      opacity: 0.9;
+      animation: fadeIn 1.7s ease-out forwards;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.4);
+    }
+
+    /* ---- BOTÓN CON PARTÍCULAS ---- */
+    .btn-wrapper {
+      position: relative;
+      margin-top: 45px;
+      animation: fadeIn 2.2s ease-out forwards, float 4s ease-in-out infinite;
+    }
+
+    .boton-acceder {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(20px);
+      border: solid 2px rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      transition: 0.25s;
+      z-index: 5;
+      position: relative;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .boton-acceder:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 40px rgba(255,255,255,0.65);
+    }
+
+    /* Contenedor de partículas */
+    .particles {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(1px);
+      animation: explode 1.1s linear forwards;
+    }
+
+    @keyframes explode {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.3);
+      }
+    }
+
+    /* Pie */
+    .pie {
+      margin-top: 40px;
+      color: #eee;
+      font-size: 0.9rem;
+      animation: fadeIn 2.6s ease-out forwards;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Fondo reemplazado por div -->
+  <div class="fondo"></div>
+  <div class="overlay"></div>
+
+  <div class="contenido">
+    <h1 class="titulo">Bienvenido</h1>
+    <p class="subtitulo">
+      Nos alegra tenerte aquí.
+    </p>
+
+    <!-- Botón con partículas -->
+    <div class="btn-wrapper">
+      <div class="particles"></div>
+
+      <a href="/login.php" class="boton-acceder" id="btn">
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <p class="pie">
+      © Todos los derechos reservados — Ing. Jesús Arotinco
+    </p>
+  </div>
+
+  <!-- SCRIPT DE PARTÍCULAS -->
+  <script>
+      const btn = document.getElementById("btn");
+      const particlesContainer = document.querySelector(".particles");
+
+      function createParticle() {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+
+        // dirección aleatoria
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = 35 + Math.random() * 45;
+
+        const x = Math.cos(angle) * distance + "px";
+        const y = Math.sin(angle) * distance + "px";
+
+        particle.style.setProperty("--x", x);
+        particle.style.setProperty("--y", y);
+
+        particlesContainer.appendChild(particle);
+
+        setTimeout(() => particle.remove(), 1100);
+      }
+
+      btn.addEventListener("mouseenter", () => {
+        for (let i = 0; i < 14; i++) {
+          setTimeout(createParticle, i * 35);
+        }
+      });
+  </script>
+
+</body>
+</html>

@@ -31,14 +31,25 @@ unset($_SESSION['login_error']);
 
   <style>
     .fondo-login {
-      width: 100%;
-      height: 100vh;
       position: fixed;
       top: 0;
       left: 0;
-      object-fit: cover;
+      width: 100%;
+      height: 100vh;
+      background-image: url('assets/img/fondo.avif');
+      background-size: cover;        /* evita el estiramiento */
+      background-position: center;   /* centrado sin saltos */
+      background-repeat: no-repeat;  /* evita repeticiones */
       z-index: -1;
+      filter: contrast(1.2) brightness(.75) saturate(1.1);
     }
+
+    @supports (-webkit-touch-callout: none) {
+      .fondo-login {
+        height: 100dvh;  /* dvh = viewport real sin barras */
+      }
+    }
+
 
     .login-card-body {
       background: rgba(255, 255, 255, 0.36);
@@ -61,7 +72,7 @@ unset($_SESSION['login_error']);
 </head>
 
 <body class="hold-transition login-page">
-  <img class="fondo-login" src="/assets/img/fondo.avif">
+  <div class="fondo-login"></div>
 
   <div class="login-box">
     <div class="card">
